@@ -5,18 +5,47 @@ var config = require('./env.json');
 
 app.use(express.static('public'));
 
-app.get('/api/get_summoner_id/:name', function(req, res){
+// IDEA: If this needs to be expanded, definitely abstract to it's own file
+// Get user's ID from Username
+// Region of NA is assumed
+app.get('/api/get_summoner_id/:name.json', function(req, res){
 
-  //https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/RiotSchmick?api_key=<key>
   var BASEURL = 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/';
-  var summonerName = req.query.name;
+  var summonerName = req.params.name;
+  var fullUrl = BASEURL + summonerName + '?api_key=' + config.api_key;
 
-  console.log(config.api_key);
-  // request(baseUrl, function (error, response, body) {
-  //   if (!error && response.statusCode == 200) {
-  //     res.json(body); // Show the HTML for the Google homepage.
-  //   }
-  // });
+  request(fullUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.json(JSON.parse(body));
+    } else {
+      res.json({
+        "error": error,
+        "response": response,
+        "status": response.statusCode
+      });
+    }
+  });
+});
+
+// Get list of full stats from user's ID
+// Region of NA is assumed
+app.get('/api/get_summoner_stats/:id.json', function(req, res){
+
+  var BASEURL = 'https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/';
+  var summonerId = req.params.id;
+  var fullUrl = BASEURL + summonerId + '/summary?api_key=' + config.api_key;
+
+  request(fullUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.json(JSON.parse(body));
+    } else {
+      res.json({
+        "error": error,
+        "response": response,
+        "status": response.statusCode
+      });
+    }
+  });
 });
 
 // Angular HTML5 routing won't support reloads unless you send all routes
