@@ -1,1 +1,3 @@
-angular.module('LeagueStats', ['ngRoute']);
+(function() {
+  angular.module('LeagueStats', ['ngRoute']);
+})();

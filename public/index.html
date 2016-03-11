@@ -7,9 +7,15 @@
   </head>
   <body>
     <h1>Test</h1>
+    <div search-bar>
+
+    </div>
     <a href="/search"> search</a>
     <a href="/stats/id">stats</a>
     <div ng-view></div>
+
+    <!-- Note: I'd normally concat all these files with a Grunt task -->
+    <!-- But I think my code is easier for you to analyze in this format -->
 
     <!-- Vendor Assets and Libs -->
     <script src="assets/javascripts/vendor/angular.js" type="text/javascript" charset="utf-8"></script>
@@ -19,7 +25,13 @@
 
     <!-- Controllers -->
     <script src="assets/javascripts/controllers/stats.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/javascripts/controllers/search.js" type="text/javascript" charset="utf-8"></script>
 
+    <!-- Services -->
+    <script src="assets/javascripts/services/find_player.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Directives -->
+    <script src="assets/javascripts/directives/searchbar.js" type="text/javascript" charset="utf-8"></script>
 
   </body>
 </html>

@@ -10,9 +10,9 @@ app.use(express.static('public'));
 // Region of NA is assumed
 app.get('/api/get_summoner_id/:name.json', function(req, res){
 
-  var BASEURL = 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/';
+  var baseUrl = 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/';
   var summonerName = req.params.name;
-  var fullUrl = BASEURL + summonerName + '?api_key=' + config.api_key;
+  var fullUrl = baseUrl + summonerName + '?api_key=' + config.api_key;
 
   request(fullUrl, function (error, response, body) {
     if (!error && response.statusCode == 200) {
@@ -31,9 +31,9 @@ app.get('/api/get_summoner_id/:name.json', function(req, res){
 // Region of NA is assumed
 app.get('/api/get_summoner_stats/:id.json', function(req, res){
 
-  var BASEURL = 'https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/';
+  var baseUrl = 'https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/';
   var summonerId = req.params.id;
-  var fullUrl = BASEURL + summonerId + '/summary?api_key=' + config.api_key;
+  var fullUrl = baseUrl + summonerId + '/summary?api_key=' + config.api_key;
 
   request(fullUrl, function (error, response, body) {
     if (!error && response.statusCode == 200) {
