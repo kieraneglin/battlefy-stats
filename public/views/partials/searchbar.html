@@ -1,3 +1,6 @@
-<form ng-submit="search(query)">
-  <input type="text" ng-model="query">
+<form name="playersearch" novalidate ng-submit="playersearch.$valid && search(query)">
+  <input type="text" ng-model="query" placeholder="Search player" required>
+  <button type="submit">
+    <i class="fa fa-search"></i>
+  </button>
 </form>
