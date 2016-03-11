@@ -1,15 +1,36 @@
-<search-bar></search-bar>
-<h1>Stats partial!</h1>
-<div>
-  <div ng-show="playerFound">
-    Loading: {{loading}}
-    <br> found: {{playerFound}}
-    <br> {{playerName}}
-    <br> {{playerId}}
-    <br> {{fullStats}}
-    <br>
+<nav>
+  <div class="stats-page">
+    <div class="stats-page-title">
+      League Stats
+    </div>
+    <div class="stats-page-form" search-bar></div>
   </div>
-
-  <loading-icon ng-hide="playerFound"></loading-icon>
-
+</nav>
+<section>
+<div class="pure-g">
+  <div class="pure-u-1-4">
+    <!-- Space Setter -->
+  </div>
+  <div class="pure-u-1-4">
+    <p>Quarters</p>
+  </div>
+  <div class="pure-u-1-4">
+    <p>Quarters</p>
+  </div>
+  <div class="pure-u-1-4">
+    <!-- Space Setter -->
+  </div>
 </div>
+  <h1>Stats partial!</h1>
+  <div>
+    <div ng-show="playerFound">
+      Loading: {{loading}}
+      <br> found: {{playerFound}}
+      <br> {{playerName}}
+      <br> {{playerId}}
+      <br> {{fullStats}}
+      <br>
+    </div>
+    <loading-icon ng-hide="playerFound"></loading-icon>
+  </div>
+</section>

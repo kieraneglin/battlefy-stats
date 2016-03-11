@@ -1,3 +1,74 @@
+nav {
+  background-color: #a48b4e;
+  height: 40px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+section {
+  margin-top: 60px;
+}
+.stats-page {
+  margin-top: 5px;
+}
+.stats-page-title {
+  display: inline-block;
+  font-weight: 300;
+  font-size: 24px;
+  color: #fff;
+  vertical-align: middle;
+  margin-left: 40px;
+  margin-top: 3px;
+}
+.stats-page-form {
+  right: 40px;
+  position: absolute;
+  display: inline-block;
+  text-align: left;
+  border: 1px solid #999;
+  max-width: 95%;
+  vertical-align: middle;
+  white-space: nowrap;
+  margin-left: 10px;
+  border-radius: 2px;
+  align-self: center;
+}
+.stats-page-form form {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.stats-page-form input {
+  position: relative;
+  line-height: 20px;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 3px 60px 3px 8px;
+  color: #7c6a59;
+  margin: 0 !important;
+  -webkit-appearance: none !important;
+  border-radius: 2px;
+  border: none;
+  font-size: 14px;
+}
+.stats-page-form button {
+  background-color: #fff;
+  color: #A0A09F;
+  width: 50px;
+  border: none;
+  flex-grow: 1;
+  cursor: pointer;
+  margin: 0;
+  padding: 3px 0;
+  font: inherit;
+  vertical-align: top;
+  text-align: center;
+  display: inline-block;
+  margin-left: -30px;
+  z-index: 1;
+  border-radius: 2px;
+}
 .spinner {
   margin: 100px auto;
   width: 50px;

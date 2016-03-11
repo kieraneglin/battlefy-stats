@@ -3,7 +3,6 @@
   margin-top: 20%;
 }
 .search-page-title {
-  font-family: 'Lato', sans-serif;
   font-weight: 100;
   font-size: 40px;
 }
@@ -29,7 +28,6 @@
   z-index: 1;
   box-sizing: border-box;
   width: 100%;
-  padding: 5px 60px 5px 8px;
   color: #7c6a59;
   margin: 0 !important;
   -webkit-appearance: none !important;
