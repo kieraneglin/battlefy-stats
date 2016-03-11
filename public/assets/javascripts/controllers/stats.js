@@ -8,12 +8,14 @@
       $scope.playerName = $routeParams.playerId;
 
       api_username = $scope.playerName.toLowerCase();
+      api_username = api_username.replace(/\s+/g, '');
 
       PlayerFind.findByUsername(api_username)
         .then(function(response) {
           if (response.data && response.data[api_username]) {
             $scope.playerFound = true;
-            return response.data[api_username].id;
+            $scope.playerId = response.data[api_username].id;
+            return $scope.playerId;
           } else {
             // Redundant re-assignment, but reads easier
             $scope.playerFound = false;

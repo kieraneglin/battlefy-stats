@@ -3,6 +3,7 @@
     function($scope, $location) {
 
       $scope.search = function(person) {
+        person = person.replace(/\s+/g, '');
         $location.path("/stats/" + person);
       };
     }

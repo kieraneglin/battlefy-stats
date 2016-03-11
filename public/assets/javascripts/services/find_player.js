@@ -19,6 +19,12 @@
             method: 'GET',
             url: '/api/get_recent_games/' + id + '.json'
           });
+        },
+        getNameById: function(id){
+          return $http({
+            method: 'GET',
+            url: '/api/get_summoner_name/' + id + '.json'
+          });
         }
       };
   }]);
