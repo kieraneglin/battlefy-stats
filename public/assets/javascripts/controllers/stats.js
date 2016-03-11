@@ -4,27 +4,46 @@
 
       $scope.loading = true;
       $scope.playerFound = false;
+      $scope.canGetStats = false;
       $scope.playerName = $routeParams.playerId;
 
       api_username = $scope.playerName.toLowerCase();
 
-      PlayerFind.findByUsername(api_username).then(function(response) {
-        if (response.data && response.data[api_username]) {
-          var playerId = response.data[api_username].id;
-          searchById(playerId);
-        } else {
-          $scope.playerFound = false;
-          $scope.loading = false;
-        }
-      });
-
-      function searchById(playerId) {
-        PlayerFind.findById(playerId).then(function(response) {
-          $scope.loading = false;
-          $scope.playerFound = true;
-          $scope.fullStats = response.data;
+      PlayerFind.findByUsername(api_username)
+        .then(function(response) {
+          if (response.data && response.data[api_username]) {
+            $scope.playerFound = true;
+            return response.data[api_username].id;
+          } else {
+            // Redundant re-assignment, but reads easier
+            $scope.playerFound = false;
+            $scope.loading = false;
+            $scope.canGetStats = false;
+          }
+        }).then(function(data) {
+          if ($scope.playerFound) {
+            PlayerFind.findById(data)
+              .then(function(response) {
+                window.console.log(response);
+                $scope.playerStats = response.data;
+              });
+          }
+          return data;
+        }).then(function(data) {
+            PlayerFind.getRecentGames(data).then(function(response) {
+              $scope.recentGames = response.data;
+              $scope.canGetStats = true;
+              $scope.loading = false;
+            });
         });
-      }
+
+      // function searchById(playerId) {
+      //   PlayerFind.findById(playerId).then(function(response) {
+      //     $scope.loading = false;
+      //     $scope.playerFound = true;
+      //     $scope.fullStats = response.data;
+      //   });
+      // }
     }
   ]);
 })();

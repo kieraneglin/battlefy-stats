@@ -25,11 +25,14 @@
   <div>
     <div ng-show="playerFound">
       Loading: {{loading}}
+      <br> can get stats: {{canGetStats}}
+
       <br> found: {{playerFound}}
       <br> {{playerName}}
       <br> {{playerId}}
-      <br> {{fullStats}}
-      <br>
+      <br> {{playerStats}}
+      <hr>
+      <br>{{recentGames}}
     </div>
     <loading-icon ng-hide="playerFound"></loading-icon>
   </div>

@@ -13,6 +13,12 @@
             method: 'GET',
             url: '/api/get_summoner_stats/' + id + '.json'
           });
+        },
+        getRecentGames: function(id){
+          return $http({
+            method: 'GET',
+            url: '/api/get_recent_games/' + id + '.json'
+          });
         }
       };
   }]);
