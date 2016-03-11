@@ -5,6 +5,9 @@ var config = require('./env.json');
 
 app.use(express.static('public'));
 
+
+// TODO: For tommorrow, definitely abstract to own file
+
 // IDEA: If this needs to be expanded, definitely abstract to it's own file
 // Get user's ID from Username
 // Region of NA is assumed
@@ -34,6 +37,25 @@ app.get('/api/get_summoner_stats/:id.json', function(req, res){
   var baseUrl = 'https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/';
   var summonerId = req.params.id;
   var fullUrl = baseUrl + summonerId + '/summary?api_key=' + config.api_key;
+
+  request(fullUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.json(JSON.parse(body));
+    } else {
+      res.json({
+        "error": error,
+        "response": response,
+        "status": response.statusCode
+      });
+    }
+  });
+});
+
+app.get('/api/get_recent_games/:id.json', function(req, res){
+
+  var baseUrl = 'https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/';
+  var summonerId = req.params.id;
+  var fullUrl = baseUrl + summonerId + '/recent?api_key=' + config.api_key;
 
   request(fullUrl, function (error, response, body) {
     if (!error && response.statusCode == 200) {
