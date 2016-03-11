@@ -1,7 +1,10 @@
 (function() {
   angular.module('LeagueStats').controller('SearchController', ['$scope', '$location',
     function($scope, $location) {
-      $scope.test = 'testkek';
+
+      $scope.search = function(person) {
+        $location.path("/stats/" + person);
+      };
     }
   ]);
 })();

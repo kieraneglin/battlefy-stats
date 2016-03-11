@@ -2,19 +2,15 @@
 <html ng-app="LeagueStats">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>League Stats</title>
     <base href="/">
+    <link rel="stylesheet" href="assets/stylesheets/stats.css" media="screen" charset="utf-8">
   </head>
   <body>
-    <h1>Test</h1>
-    <div search-bar>
-
-    </div>
-    <a href="/search"> search</a>
-    <a href="/stats/id">stats</a>
+    
     <div ng-view></div>
 
-    <!-- Note: I'd normally concat all these files with a Grunt task -->
+    <!-- Note: I'd normally concat/uglify all these files with a Grunt task -->
     <!-- But I think my code is easier for you to analyze in this format -->
 
     <!-- Vendor Assets and Libs -->
@@ -32,6 +28,7 @@
 
     <!-- Directives -->
     <script src="assets/javascripts/directives/searchbar.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/javascripts/directives/loading.js" type="text/javascript" charset="utf-8"></script>
 
   </body>
 </html>
