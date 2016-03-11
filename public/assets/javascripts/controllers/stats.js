@@ -24,26 +24,23 @@
           if ($scope.playerFound) {
             PlayerFind.findById(data)
               .then(function(response) {
-                window.console.log(response);
                 $scope.playerStats = response.data;
               });
           }
           return data;
         }).then(function(data) {
+          if ($scope.playerFound) {
             PlayerFind.getRecentGames(data).then(function(response) {
               $scope.recentGames = response.data;
               $scope.canGetStats = true;
               $scope.loading = false;
             });
+          } else {
+            $scope.canGetStats = false;
+            $scope.loading = false;
+          }
         });
 
-      // function searchById(playerId) {
-      //   PlayerFind.findById(playerId).then(function(response) {
-      //     $scope.loading = false;
-      //     $scope.playerFound = true;
-      //     $scope.fullStats = response.data;
-      //   });
-      // }
     }
   ]);
 })();

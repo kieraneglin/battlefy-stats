@@ -70,6 +70,25 @@ app.get('/api/get_recent_games/:id.json', function(req, res){
   });
 });
 
+app.get('/api/get_summoner_name/:id.json', function(req, res){
+
+  var baseUrl = 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/';
+  var summonerId = req.params.id;
+  var fullUrl = baseUrl + summonerId + '?api_key=' + config.api_key;
+
+  request(fullUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.json(JSON.parse(body));
+    } else {
+      res.json({
+        "error": error,
+        "response": response,
+        "status": response.statusCode
+      });
+    }
+  });
+});
+
 // Angular HTML5 routing won't support reloads unless you send all routes
 // to your server's entrypoint
 app.use(function(req, res) {
