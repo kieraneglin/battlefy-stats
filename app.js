@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var request = require('request');
 var config = require('./env.json');
+var champions = require('./championlist.json');
 
 app.use(express.static('public'));
 
@@ -70,23 +71,14 @@ app.get('/api/get_recent_games/:id.json', function(req, res){
   });
 });
 
-app.get('/api/get_summoner_name/:id.json', function(req, res){
-
-  var baseUrl = 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/';
+app.get('/api/get_champion_name/:id.json', function(req, res){
   var summonerId = req.params.id;
-  var fullUrl = baseUrl + summonerId + '?api_key=' + config.api_key;
 
-  request(fullUrl, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      res.json(JSON.parse(body));
-    } else {
-      res.json({
-        "error": error,
-        "response": response,
-        "status": response.statusCode
-      });
-    }
+  champ = champions.filter(function (el) {
+    return el.id == summonerId;
   });
+
+  res.json(champ);
 });
 
 // Angular HTML5 routing won't support reloads unless you send all routes

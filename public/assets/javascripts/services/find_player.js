@@ -23,7 +23,7 @@
         getNameById: function(id){
           return $http({
             method: 'GET',
-            url: '/api/get_summoner_name/' + id + '.json'
+            url: '/api/get_champion_name/' + id + '.json'
           });
         }
       };

@@ -1,0 +1,28 @@
+<table class="pure-table">
+  <thead>
+    <tr>
+      <th ng-click="sortType = 'playerStatSummaryType'">
+        Match Type <i class="fa fa-caret-up"></i>
+      </th>
+      <th ng-click="sortType = '-wins'">
+        Wins <i class="fa fa-caret-up"></i>
+      </th>
+      <th ng-click="sortType = '-aggregatedStats.totalChampionKills'">
+        Champion Kills <i class="fa fa-caret-up"></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="stat in playerStats.playerStatSummaries | orderBy:sortType" ng-if="stat.aggregatedStats.totalChampionKills">
+      <td>
+        {{stat.playerStatSummaryType | match}}
+      </td>
+      <td>
+        {{stat.wins}}
+      </td>
+      <td>
+        {{stat.aggregatedStats.totalChampionKills}}
+      </td>
+    </tr>
+  </tbody>
+</table>

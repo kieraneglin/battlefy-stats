@@ -1,0 +1,49 @@
+<div ng-repeat="game in recentGames.games" ng-class="(game.stats.win) ? 'game-won' : 'game-lost'">
+  <div class="game-header">
+    <span class="game-type">{{game.gameMode.toLowerCase()}}</span>
+    <span class="game-create-date">• {{game.createDate | timeAgo}}</span>
+    <div class="game-header-right">
+      <span class="game-duration">{{game.stats.timePlayed*1000 | duration:"mm'm' s's'"}} - </span>
+      <span class="game-outcome">{{(game.stats.win) ? 'Victory' : 'Defeat'}}</span>
+    </div>
+  </div>
+  <div class="game-body">
+    <div class="pure-g">
+      <div class="pure-u-4-24 game-champion">
+        <id-to-name player-id="game.championId"></id-to-name>
+      </div>
+      <div class="pure-u-3-24"></div>
+      <div class="pure-u-4-24 game-misc-stats">
+        <div class="game-level">Level {{game.stats.level}}</div>
+        <div class="game-kda-ratio">
+          <span class="game-champ-kills">{{game.stats.championsKilled || 0}}</span>
+          <span class="separator">/</span>
+          <span class="game-deaths">{{game.stats.numDeaths || 0}}</span>
+          <span class="separator">/</span>
+          <span class="game-assists">{{game.stats.assists || 0}}</span>
+        </div>
+        <div class="game-ratio">
+          KDA: {{(game.stats.championsKilled+game.stats.assists)/game.stats.numDeaths | number:2}}
+        </div>
+      </div>
+      <div class="pure-u-4-24"></div>
+      <div class="pure-u-4-24 game-team-teammate">
+        <strong>Teammates</strong>
+        <div>
+          <div class="player-list" ng-repeat="player in game.fellowPlayers" ng-if="player.teamId == game.teamId">
+            {{player.summonerId}}
+          </div>
+        </div>
+      </div>
+      <div class="pure-u-1-24"></div>
+      <div class="pure-u-4-24 game-team-enemy">
+        <strong>Opponents</strong>
+        <div>
+          <div class="player-list" ng-repeat="player in game.fellowPlayers" ng-if="player.teamId !== game.teamId">
+            {{player.summonerId}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

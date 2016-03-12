@@ -7,32 +7,23 @@
   </div>
 </nav>
 <section>
-<div class="pure-g">
-  <div class="pure-u-1-4">
-    <!-- Space Setter -->
-  </div>
-  <div class="pure-u-1-4">
-    <p>Quarters</p>
-  </div>
-  <div class="pure-u-1-4">
-    <p>Quarters</p>
-  </div>
-  <div class="pure-u-1-4">
-    <!-- Space Setter -->
-  </div>
-</div>
-  <h1>Stats partial!</h1>
   <div>
-    Loading: {{loading}}
-    <br> can get stats: {{canGetStats}}
-
-    <br> found: {{playerFound}}
     <div ng-hide="loading">
-      <span id-to-name player-id="585897"></span>
-      <!-- <br> {{'585897' | idname}} -->
-      <br> {{playerStats}}
-      <hr>
-      <br>{{recentGames}}
+      <div class="pure-g">
+        <div class="pure-u-2-24"></div>
+
+        <div class="pure-u-7-24">
+          <h1>Stats by Mode</h1>
+          <stat-table></stat-table>
+        </div>
+        <div class="pure-u-1-24"></div>
+
+        <div class="pure-u-10-24">
+          <h1>Recent Games</h1>
+          <recent-games></recent-games>
+        </div>
+        <div class="pure-u-4-24"></div>
+      </div>
     </div>
     <loading-icon ng-show="loading"></loading-icon>
   </div>
