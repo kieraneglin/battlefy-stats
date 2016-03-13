@@ -16,3 +16,4 @@ node_modules
 
 api_key.txt
 env.json
+.env
