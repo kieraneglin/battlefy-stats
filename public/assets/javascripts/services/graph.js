@@ -8,6 +8,7 @@
           bottom: 80,
           left: 50
         };
+        data = data.reverse();
         var width = 640 - margin.right - margin.left;
         var height = 300 - margin.top - margin.bottom;
         var x = d3.scale
