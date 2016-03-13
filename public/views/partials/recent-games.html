@@ -1,3 +1,19 @@
+<table class="pure-table chart-table">
+  <thead>
+    <tr>
+      <th>
+        KDA Over Last 10 Matches
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div id="graph" class="aGraph"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <div ng-repeat="game in recentGames.games" ng-class="(game.stats.win) ? 'game-won' : 'game-lost'">
   <div class="game-header">
     <span class="game-type">{{game.gameMode.toLowerCase()}}</span>
@@ -23,7 +39,7 @@
           <span class="game-assists">{{game.stats.assists || 0}}</span>
         </div>
         <div class="game-ratio">
-          KDA: {{(game.stats.championsKilled+game.stats.assists)/game.stats.numDeaths | number:2}}
+          KDA: {{(game.stats.championsKilled+game.stats.assists)/game.stats.numDeaths || game.stats.championsKilled+game.stats.assists | number:2}}
         </div>
       </div>
       <div class="pure-u-4-24"></div>
