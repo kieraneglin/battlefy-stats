@@ -8,7 +8,7 @@
 </nav>
 <section>
   <div class="pure-g">
-    <div ng-show="canGetStats && !loading">
+    <div ng-show="canGetStats && !loading" style="width: 100%;">
       <div class="pure-u-1 pure-u-lg-2-24"></div>
       <div class="pure-u-1 pure-u-lg-7-24">
         <h1>Stats by Mode</h1>
@@ -22,7 +22,7 @@
       </div>
       <div class="pure-u-1-24 pure-u-lg-4-24"></div>
     </div>
-    <div ng-show="!canGetStats && !loading">
+    <div ng-show="!canGetStats && !loading" style="width: 100%;">
       <div class="pure-u-1-1 no-match">
         <h1>No Stats Found for {{playerName}}</h1>
       </div>
