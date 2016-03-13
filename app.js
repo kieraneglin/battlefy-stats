@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var request = require('request');
-var config = require('./env.json').api_key || process.env.LOL_KEY;
+var config = process.env.LOL_KEY;
 var champions = require('./championlist.json');
 
 app.use(express.static('public'));
