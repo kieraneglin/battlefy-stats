@@ -3,7 +3,7 @@ var app = express();
 var request = require('request');
 var config = process.env.LOL_KEY;
 var champions = require('./championlist.json');
-
+var port = process.env.PORT || 3000
 app.use(express.static('public'));
 // TODO: For tommorrow, definitely abstract to own file
 
@@ -85,6 +85,6 @@ app.use(function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-var server = app.listen(3000, function() {
+var server = app.listen(port, function() {
  console.log('Listening on port %d', server.address().port);
 });
