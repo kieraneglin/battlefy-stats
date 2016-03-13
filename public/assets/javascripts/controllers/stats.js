@@ -49,9 +49,7 @@
             $scope.canGetStats = false;
             $scope.loading = false;
           }
-
         });
-
     }
   ]);
 })();

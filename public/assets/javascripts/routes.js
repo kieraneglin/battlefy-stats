@@ -12,10 +12,12 @@
           templateUrl: 'views/partials/stats.html',
           controller: 'StatsController'
         })
-        .otherwise({redirectTo: '/'});
+        .otherwise({
+          redirectTo: '/search'
+        });
 
-        // To remove those way-lame hashes from URL
-        $locationProvider.html5Mode(true);
+      // To remove those way-lame hashes from URL
+      $locationProvider.html5Mode(true);
     }
   ]);
 })();

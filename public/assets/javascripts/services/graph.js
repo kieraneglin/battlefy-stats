@@ -7,9 +7,9 @@
           right: 20,
           bottom: 80,
           left: 50
-        }; // margins
-        var width = 640 - margin.right - margin.left; // widthidth
-        var height = 300 - margin.top - margin.bottom; // height
+        };
+        var width = 640 - margin.right - margin.left;
+        var height = 300 - margin.top - margin.bottom;
         var x = d3.scale
           .linear()
           .domain([0, data.length - 1])
@@ -34,13 +34,6 @@
           .classed("svg-content-responsive", true)
           .append("svg:g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        // graph.append("text")
-        //   .attr("x", (width / 2 - 25))
-        //   .attr("y", -10)
-        //   .attr("text-anchor", "middle")
-        //   .style("font-size", "16px")
-        //   .style("text-decoration", "underline")
-        //   .text("KDA Over Last 10 Games");
         var xAxis = d3.svg.axis()
           .scale(x)
           .tickSize(-height)
